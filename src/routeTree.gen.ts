@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BuildingInspectionsRouteImport } from './routes/building-inspections'
 import { Route as ConstructionProjectManagementRouteImport } from './routes/construction-project-management'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
@@ -22,6 +23,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ServicesArchitectureDesignRouteImport } from './routes/services_.architecture-design'
+import { Route as ApiPublicChatRouteImport } from './routes/api/public/chat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutUsRoute = AboutUsRouteImport.update({
   id: '/about-us',
   path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildingInspectionsRoute = BuildingInspectionsRouteImport.update({
@@ -92,10 +99,16 @@ const ServicesArchitectureDesignRoute =
     path: '/services/architecture-design',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicChatRoute = ApiPublicChatRouteImport.update({
+  id: '/api/public/chat',
+  path: '/api/public/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
+  '/admin': typeof AdminRoute
   '/building-inspections': typeof BuildingInspectionsRoute
   '/construction-project-management': typeof ConstructionProjectManagementRoute
   '/contact-us': typeof ContactUsRoute
@@ -107,10 +120,12 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/services/architecture-design': typeof ServicesArchitectureDesignRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
+  '/admin': typeof AdminRoute
   '/building-inspections': typeof BuildingInspectionsRoute
   '/construction-project-management': typeof ConstructionProjectManagementRoute
   '/contact-us': typeof ContactUsRoute
@@ -122,11 +137,13 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/services/architecture-design': typeof ServicesArchitectureDesignRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
+  '/admin': typeof AdminRoute
   '/building-inspections': typeof BuildingInspectionsRoute
   '/construction-project-management': typeof ConstructionProjectManagementRoute
   '/contact-us': typeof ContactUsRoute
@@ -138,12 +155,14 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/services_/architecture-design': typeof ServicesArchitectureDesignRoute
+  '/api/public/chat': typeof ApiPublicChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about-us'
+    | '/admin'
     | '/building-inspections'
     | '/construction-project-management'
     | '/contact-us'
@@ -155,10 +174,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/thank-you'
     | '/services/architecture-design'
+    | '/api/public/chat'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about-us'
+    | '/admin'
     | '/building-inspections'
     | '/construction-project-management'
     | '/contact-us'
@@ -170,10 +191,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/thank-you'
     | '/services/architecture-design'
+    | '/api/public/chat'
   id:
     | '__root__'
     | '/'
     | '/about-us'
+    | '/admin'
     | '/building-inspections'
     | '/construction-project-management'
     | '/contact-us'
@@ -185,11 +208,13 @@ export interface FileRouteTypes {
     | '/services'
     | '/thank-you'
     | '/services_/architecture-design'
+    | '/api/public/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
+  AdminRoute: typeof AdminRoute
   BuildingInspectionsRoute: typeof BuildingInspectionsRoute
   ConstructionProjectManagementRoute: typeof ConstructionProjectManagementRoute
   ContactUsRoute: typeof ContactUsRoute
@@ -201,6 +226,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   ThankYouRoute: typeof ThankYouRoute
   ServicesArchitectureDesignRoute: typeof ServicesArchitectureDesignRoute
+  ApiPublicChatRoute: typeof ApiPublicChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -217,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/about-us'
       fullPath: '/about-us'
       preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/building-inspections': {
@@ -296,12 +329,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesArchitectureDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/chat': {
+      id: '/api/public/chat'
+      path: '/api/public/chat'
+      fullPath: '/api/public/chat'
+      preLoaderRoute: typeof ApiPublicChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
+  AdminRoute: AdminRoute,
   BuildingInspectionsRoute: BuildingInspectionsRoute,
   ConstructionProjectManagementRoute: ConstructionProjectManagementRoute,
   ContactUsRoute: ContactUsRoute,
@@ -313,6 +354,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   ThankYouRoute: ThankYouRoute,
   ServicesArchitectureDesignRoute: ServicesArchitectureDesignRoute,
+  ApiPublicChatRoute: ApiPublicChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
