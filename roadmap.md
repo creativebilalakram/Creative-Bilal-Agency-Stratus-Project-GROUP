@@ -14,5 +14,5 @@
 - [x] Chat widget (AgencyEngine, hybrid AI route /api/public/chat via Lovable AI Gateway), desktop floating launcher
 - [x] Tracking + visitor analytics + reviews fed to chat
 - [x] /admin redirect route
-- [ ] Contact form swap — EXCLUDED by user ("exclude contact form"): existing VEX form stays untouched
-- [ ] Verify build/tests, publish, 5-line checklist
+- [x] Contact form swapped to kit AgencyForm (user approved later): same fields (name/phone/email/service/message), site styling, demo fallback; old GHL/VEX embed saved in memory for future reinstatement
+- [x] Verify build/tests, publish, 5-line checklist
