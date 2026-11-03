@@ -8,6 +8,7 @@
 import { useEffect } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
+import chatAvatar from "@/assets/chat-avatar.png";
 import {
   AGENCY_PLATFORM_URL,
   AGENCY_BUSINESS_PHONE,
@@ -23,7 +24,7 @@ import { resolveAgencyKey, subscribeAgencyKey } from "@/hooks/useAgencyKey";
 const BRAND = {
   name: "Stratus Project Group",
   accentColor: "#DC2626",
-  avatarUrl: "https://stratusprojectgroup.com.au/favicon.png",
+  avatarUrl: chatAvatar,
   welcome:
     "Hi there — welcome to Stratus Project Group! Ask me anything about our services, the approvals process, fees or getting started. Happy to help.",
 };
