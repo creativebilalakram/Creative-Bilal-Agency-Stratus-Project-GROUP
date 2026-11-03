@@ -24,7 +24,9 @@ import { resolveAgencyKey, subscribeAgencyKey } from "@/hooks/useAgencyKey";
 const BRAND = {
   name: "Stratus Project Group",
   accentColor: "#DC2626",
-  avatarUrl: chatAvatar,
+  // White mark on red — served from public/ so the platform always gets an
+  // absolute URL it can render (relative bundled paths are ignored by chat.js).
+  avatarUrl: "/chat-avatar.png",
   welcome:
     "Hi there — welcome to Stratus Project Group! Ask me anything about our services, the approvals process, fees or getting started. Happy to help.",
 };
@@ -201,13 +203,38 @@ export function AgencyEngine() {
     let startedKey = "";
     let active = true;
 
+    // The platform stores branding from the very first sync and never
+    // overwrites it, so its saved avatar is the old red favicon. Rewrite that
+    // stale value when the widget loads its config so the chat header shows
+    // the site's current white-on-red logo. Admin-set values stay untouched.
+    const absoluteAvatar = () => new URL(BRAND.avatarUrl, window.location.origin).href;
+    const w = window as unknown as { __agencyAvatarPatch?: boolean };
+    if (!w.__agencyAvatarPatch) {
+      w.__agencyAvatarPatch = true;
+      const origFetch = window.fetch.bind(window);
+      window.fetch = async (input, init) => {
+        const url = typeof input === "string" ? input : input instanceof Request ? input.url : String(input);
+        const res = await origFetch(input, init);
+        if (!url.includes("/api/public/kit/v1/config")) return res;
+        try {
+          const data = (await res.clone().json()) as { chatbot?: { avatarUrl?: string } };
+          const av = data?.chatbot?.avatarUrl;
+          if (typeof av === "string" && /favicon\.png/i.test(av)) {
+            data.chatbot!.avatarUrl = absoluteAvatar();
+            return new Response(JSON.stringify(data), { status: res.status, statusText: res.statusText, headers: { "content-type": "application/json" } });
+          }
+        } catch { /* keep the original response */ }
+        return res;
+      };
+    }
+
     const initChat = (siteKey: string) => {
       (window as unknown as { AgencyChat?: { init: (opts: Record<string, unknown>) => void } }).AgencyChat?.init({
         ...(siteKey ? { siteKey } : {}),
         clientChatEndpoint: "/api/public/chat",
         branding: {
           accentColor: BRAND.accentColor,
-          avatarUrl: BRAND.avatarUrl,
+          avatarUrl: absoluteAvatar(),
           botName: BRAND.name,
           phone: AGENCY_BUSINESS_PHONE,
         },
