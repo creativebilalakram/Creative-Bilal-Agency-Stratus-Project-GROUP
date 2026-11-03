@@ -1,4 +1,7 @@
 import "@testing-library/jest-dom/vitest";
+import { vi } from "vitest";
+
+vi.mock("lottie-react", () => ({ default: () => null }));
 
 Object.defineProperty(window, "scrollTo", {
   writable: true,

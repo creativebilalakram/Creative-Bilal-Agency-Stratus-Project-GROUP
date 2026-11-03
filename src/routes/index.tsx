@@ -1,24 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Index from "@/components/pages/Index";
+import { pageHead } from "@/lib/seo-head";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () =>
+    pageHead({
+      title:
+        "Stratus Project Group | Strategic Design & Construction Coordination Sydney",
+      description:
+        "End-to-end development services in Sydney - feasibility studies, design documentation, DA/CDC approvals, engineering compliance, and construction coordination for residential projects.",
+      canonical: "/",
+    }),
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
