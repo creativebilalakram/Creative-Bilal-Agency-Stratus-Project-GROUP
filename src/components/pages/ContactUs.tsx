@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import StratusContactForm from "@/components/StratusContactForm";
 
 const ContactUsPage = () => {
   const introRef = useScrollReveal();
@@ -16,13 +17,6 @@ const ContactUsPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const src = "https://site.vexmanagement.com.au/js/form_embed.js";
-    if (!document.querySelector(`script[src="${src}"]`)) {
-      const sc = document.createElement("script");
-      sc.src = src;
-      sc.async = true;
-      document.body.appendChild(sc);
-    }
   }, []);
 
   useEffect(() => {
@@ -99,29 +93,7 @@ const ContactUsPage = () => {
               </p>
 
               <div className="flex-1">
-                <iframe
-                  src="https://site.vexmanagement.com.au/widget/form/UiXzPTpRf35g783Xj3lX"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    minHeight: 420,
-                    border: "none",
-                    borderRadius: 8,
-                  }}
-                  id="inline-contact-page-form"
-                  data-layout='{"id":"INLINE"}'
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="Stratus website Form"
-                  data-height="420"
-                  data-layout-iframe-id="inline-contact-page-form"
-                  data-form-id="UiXzPTpRf35g783Xj3lX"
-                  title="Stratus Contact Form"
-                />
+                <StratusContactForm />
               </div>
 
               <div className="mt-3 text-center">
