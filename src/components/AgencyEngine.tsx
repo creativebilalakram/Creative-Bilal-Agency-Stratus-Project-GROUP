@@ -229,8 +229,8 @@ export function AgencyEngine() {
         s.id = "agency-chat";
         s.src = AGENCY_PLATFORM_URL + "/api/public/kit/chat.js";
         s.async = true;
-        if (agencyEnabled) s.dataset.siteKey = siteKey;
-        s.dataset.launcher = "custom"; // the site's own data-open-chat buttons open it
+        if (agencyEnabled) s.dataset["siteKey"] = siteKey;
+        s.dataset["launcher"] = "custom"; // the site's own data-open-chat buttons open it
         s.onload = () => { if (active) initChat(currentKey); };
         document.body.appendChild(s);
       }
