@@ -401,3 +401,18 @@ img {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+@utility agency-glass {
+  background: hsl(var(--background) / 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 0 hsl(0 0% 100% / 0.6) inset, 0 24px 50px -20px hsl(222 47% 11% / 0.45), 0 8px 18px -10px hsl(222 47% 11% / 0.3);
+}
+@keyframes agency-sheen {
+  0%, 70%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0), 0 24px 50px -20px hsl(222 47% 11% / 0.45); }
+  80% { box-shadow: 0 0 0 10px hsl(var(--primary) / 0.18), 0 24px 50px -20px hsl(222 47% 11% / 0.45); }
+}
+@utility agency-sheen {
+  animation: agency-sheen 5s ease-in-out infinite;
+  &:hover { animation: none; }
+}
