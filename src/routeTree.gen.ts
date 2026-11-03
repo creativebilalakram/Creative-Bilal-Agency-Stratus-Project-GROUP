@@ -10,33 +10,197 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as BuildingInspectionsRouteImport } from './routes/building-inspections'
+import { Route as ConstructionProjectManagementRouteImport } from './routes/construction-project-management'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as DevelopmentApprovalsDaCdcRouteImport } from './routes/development-approvals-da-cdc'
+import { Route as EngineeringComplianceSetupRouteImport } from './routes/engineering-compliance-setup'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as FeasibilityStudyRouteImport } from './routes/feasibility-study'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as ServicesArchitectureDesignRouteImport } from './routes/services_.architecture-design'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuildingInspectionsRoute = BuildingInspectionsRouteImport.update({
+  id: '/building-inspections',
+  path: '/building-inspections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionProjectManagementRoute =
+  ConstructionProjectManagementRouteImport.update({
+    id: '/construction-project-management',
+    path: '/construction-project-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevelopmentApprovalsDaCdcRoute =
+  DevelopmentApprovalsDaCdcRouteImport.update({
+    id: '/development-approvals-da-cdc',
+    path: '/development-approvals-da-cdc',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EngineeringComplianceSetupRoute =
+  EngineeringComplianceSetupRouteImport.update({
+    id: '/engineering-compliance-setup',
+    path: '/engineering-compliance-setup',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeasibilityStudyRoute = FeasibilityStudyRouteImport.update({
+  id: '/feasibility-study',
+  path: '/feasibility-study',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesArchitectureDesignRoute =
+  ServicesArchitectureDesignRouteImport.update({
+    id: '/services_/architecture-design',
+    path: '/services/architecture-design',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/building-inspections': typeof BuildingInspectionsRoute
+  '/construction-project-management': typeof ConstructionProjectManagementRoute
+  '/contact-us': typeof ContactUsRoute
+  '/development-approvals-da-cdc': typeof DevelopmentApprovalsDaCdcRoute
+  '/engineering-compliance-setup': typeof EngineeringComplianceSetupRoute
+  '/faqs': typeof FaqsRoute
+  '/feasibility-study': typeof FeasibilityStudyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/services': typeof ServicesRoute
+  '/thank-you': typeof ThankYouRoute
+  '/services/architecture-design': typeof ServicesArchitectureDesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/building-inspections': typeof BuildingInspectionsRoute
+  '/construction-project-management': typeof ConstructionProjectManagementRoute
+  '/contact-us': typeof ContactUsRoute
+  '/development-approvals-da-cdc': typeof DevelopmentApprovalsDaCdcRoute
+  '/engineering-compliance-setup': typeof EngineeringComplianceSetupRoute
+  '/faqs': typeof FaqsRoute
+  '/feasibility-study': typeof FeasibilityStudyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/services': typeof ServicesRoute
+  '/thank-you': typeof ThankYouRoute
+  '/services/architecture-design': typeof ServicesArchitectureDesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/building-inspections': typeof BuildingInspectionsRoute
+  '/construction-project-management': typeof ConstructionProjectManagementRoute
+  '/contact-us': typeof ContactUsRoute
+  '/development-approvals-da-cdc': typeof DevelopmentApprovalsDaCdcRoute
+  '/engineering-compliance-setup': typeof EngineeringComplianceSetupRoute
+  '/faqs': typeof FaqsRoute
+  '/feasibility-study': typeof FeasibilityStudyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/services': typeof ServicesRoute
+  '/thank-you': typeof ThankYouRoute
+  '/services_/architecture-design': typeof ServicesArchitectureDesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-us'
+    | '/building-inspections'
+    | '/construction-project-management'
+    | '/contact-us'
+    | '/development-approvals-da-cdc'
+    | '/engineering-compliance-setup'
+    | '/faqs'
+    | '/feasibility-study'
+    | '/privacy-policy'
+    | '/services'
+    | '/thank-you'
+    | '/services/architecture-design'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-us'
+    | '/building-inspections'
+    | '/construction-project-management'
+    | '/contact-us'
+    | '/development-approvals-da-cdc'
+    | '/engineering-compliance-setup'
+    | '/faqs'
+    | '/feasibility-study'
+    | '/privacy-policy'
+    | '/services'
+    | '/thank-you'
+    | '/services/architecture-design'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-us'
+    | '/building-inspections'
+    | '/construction-project-management'
+    | '/contact-us'
+    | '/development-approvals-da-cdc'
+    | '/engineering-compliance-setup'
+    | '/faqs'
+    | '/feasibility-study'
+    | '/privacy-policy'
+    | '/services'
+    | '/thank-you'
+    | '/services_/architecture-design'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  BuildingInspectionsRoute: typeof BuildingInspectionsRoute
+  ConstructionProjectManagementRoute: typeof ConstructionProjectManagementRoute
+  ContactUsRoute: typeof ContactUsRoute
+  DevelopmentApprovalsDaCdcRoute: typeof DevelopmentApprovalsDaCdcRoute
+  EngineeringComplianceSetupRoute: typeof EngineeringComplianceSetupRoute
+  FaqsRoute: typeof FaqsRoute
+  FeasibilityStudyRoute: typeof FeasibilityStudyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ServicesRoute: typeof ServicesRoute
+  ThankYouRoute: typeof ThankYouRoute
+  ServicesArchitectureDesignRoute: typeof ServicesArchitectureDesignRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +212,107 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/building-inspections': {
+      id: '/building-inspections'
+      path: '/building-inspections'
+      fullPath: '/building-inspections'
+      preLoaderRoute: typeof BuildingInspectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction-project-management': {
+      id: '/construction-project-management'
+      path: '/construction-project-management'
+      fullPath: '/construction-project-management'
+      preLoaderRoute: typeof ConstructionProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/development-approvals-da-cdc': {
+      id: '/development-approvals-da-cdc'
+      path: '/development-approvals-da-cdc'
+      fullPath: '/development-approvals-da-cdc'
+      preLoaderRoute: typeof DevelopmentApprovalsDaCdcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engineering-compliance-setup': {
+      id: '/engineering-compliance-setup'
+      path: '/engineering-compliance-setup'
+      fullPath: '/engineering-compliance-setup'
+      preLoaderRoute: typeof EngineeringComplianceSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feasibility-study': {
+      id: '/feasibility-study'
+      path: '/feasibility-study'
+      fullPath: '/feasibility-study'
+      preLoaderRoute: typeof FeasibilityStudyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/architecture-design': {
+      id: '/services_/architecture-design'
+      path: '/services/architecture-design'
+      fullPath: '/services/architecture-design'
+      preLoaderRoute: typeof ServicesArchitectureDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  BuildingInspectionsRoute: BuildingInspectionsRoute,
+  ConstructionProjectManagementRoute: ConstructionProjectManagementRoute,
+  ContactUsRoute: ContactUsRoute,
+  DevelopmentApprovalsDaCdcRoute: DevelopmentApprovalsDaCdcRoute,
+  EngineeringComplianceSetupRoute: EngineeringComplianceSetupRoute,
+  FaqsRoute: FaqsRoute,
+  FeasibilityStudyRoute: FeasibilityStudyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ServicesRoute: ServicesRoute,
+  ThankYouRoute: ThankYouRoute,
+  ServicesArchitectureDesignRoute: ServicesArchitectureDesignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

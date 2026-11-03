@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Stratus site structure (migrated from React/Vite SPA)
+- All page components live in `src/components/pages/` and `src/components/`; `src/routes/*.tsx` files render them via TanStack Router — do not reintroduce `react-router-dom` or `react-helmet-async`. Why: the source SPA was ported to TanStack Start; router and SEO are handled by route files and `src/lib/seo-head.ts` (head()).
+- The service routes are flat route files (`services_.architecture-design.tsx`) so `/services` does not become a layout wrapping the child. Why: `src/routes/services.tsx` renders a full page without `<Outlet/>`.
+- `src/components/SEO.tsx` is an intentional no-op kept so ported pages compile unchanged.
