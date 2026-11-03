@@ -7,7 +7,7 @@
 
 import { useEffect } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 import chatAvatar from "@/assets/chat-avatar.png";
 import {
   AGENCY_PLATFORM_URL,
@@ -255,18 +255,44 @@ export function AgencyEngine() {
     return () => { active = false; unsubscribe(); };
   }, []);
 
-  // Desktop launcher: one floating button, fixed bottom-right. Mobile keeps
-  // the widget's own bottom-right AI bubble.
+  // Desktop: premium floating pill bottom-right. Mobile: sticky glass dock (AI 40% / quote 60%).
   return (
-    <button
-      type="button"
-      data-open-chat
-      aria-label="Chat with us"
-      className="hidden md:flex fixed bottom-6 right-6 z-40 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_-8px_rgba(0,0,0,0.35)] transition-transform duration-200 hover:scale-[1.03] active:scale-95"
-    >
-      <MessageCircle className="h-5 w-5" aria-hidden="true" />
-      Chat with us
-    </button>
+    <>
+      <div
+        className="agency-glass fixed inset-x-3 z-40 flex gap-2 rounded-full p-1.5 md:hidden"
+        style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }}
+      >
+        <button
+          type="button"
+          data-open-chat
+          className="flex min-h-[48px] basis-[40%] items-center justify-center gap-2 rounded-full bg-foreground/[0.06] text-sm font-semibold text-foreground"
+        >
+          <MessageCircle className="h-4 w-4 text-primary" aria-hidden="true" /> Ask AI
+        </button>
+        <a
+          href="/contact-us"
+          data-cta="dock-quote"
+          className="flex min-h-[48px] flex-1 basis-[60%] items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-[0_12px_28px_-12px_hsl(var(--primary)/0.7)]"
+        >
+          Get a Free Quote <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+      <button
+        type="button"
+        data-open-chat
+        aria-label="Chat with Stratus"
+        className="agency-glass agency-sheen group fixed bottom-6 right-6 z-40 hidden h-16 items-center gap-3 rounded-full pl-2 pr-6 transition-transform duration-300 hover:-translate-y-1 md:flex"
+      >
+        <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-primary shadow-[0_8px_20px_-8px_hsl(var(--primary)/0.8)]">
+          <img src={chatAvatar} alt="" width={48} height={48} className="h-full w-full object-cover" />
+          <span className="absolute bottom-0.5 right-0.5 h-3 w-3 rounded-full border-2 border-background bg-[hsl(142_70%_45%)]" />
+        </span>
+        <span className="flex flex-col items-start leading-tight">
+          <span className="text-sm font-bold text-foreground">Ask Stratus</span>
+          <span className="text-[11px] font-medium text-muted-foreground">AI assistant · Online now</span>
+        </span>
+      </button>
+    </>
   );
 }
 
