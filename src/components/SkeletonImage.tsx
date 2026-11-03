@@ -1,4 +1,4 @@
-import { useState, ImgHTMLAttributes } from "react";
+import { useState, useEffect, useRef, ImgHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 interface SkeletonImageProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -7,6 +7,25 @@ interface SkeletonImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 const SkeletonImage = ({ className, skeletonClassName, alt, onLoad, ...props }: SkeletonImageProps) => {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Image may finish loading before hydration, so onLoad never fires.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (!img) return;
+    const done = () => setLoaded(true);
+    if (img.complete && img.naturalWidth > 0) {
+      done();
+      return;
+    }
+    img.addEventListener("load", done);
+    img.addEventListener("error", done);
+    return () => {
+      img.removeEventListener("load", done);
+      img.removeEventListener("error", done);
+    };
+  }, [props.src]);
+
 
   return (
     <div className={cn("relative overflow-hidden", skeletonClassName)}>
@@ -23,6 +42,7 @@ const SkeletonImage = ({ className, skeletonClassName, alt, onLoad, ...props }: 
         </div>
       )}
       <img
+        ref={imgRef}
         className={cn(
           "transition-opacity duration-700 ease-out",
           loaded ? "opacity-100" : "opacity-0",
