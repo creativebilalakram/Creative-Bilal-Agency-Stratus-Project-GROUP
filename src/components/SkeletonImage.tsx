@@ -12,7 +12,6 @@ const SkeletonImage = ({ className, skeletonClassName, alt, onLoad, ...props }: 
   // Image may finish loading before hydration, so onLoad never fires.
   useEffect(() => {
     const img = imgRef.current;
-    console.log("SKEL", props.src, !!img, img?.complete, img?.naturalWidth);
     if (!img) return;
     const done = () => setLoaded(true);
     if (img.complete && img.naturalWidth > 0) {
@@ -43,6 +42,7 @@ const SkeletonImage = ({ className, skeletonClassName, alt, onLoad, ...props }: 
         </div>
       )}
       <img
+        ref={imgRef}
         className={cn(
           "transition-opacity duration-700 ease-out",
           loaded ? "opacity-100" : "opacity-0",
