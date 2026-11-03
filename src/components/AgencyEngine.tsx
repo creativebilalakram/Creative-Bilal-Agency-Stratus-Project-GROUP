@@ -259,21 +259,30 @@ export function AgencyEngine() {
   return (
     <>
       <div
-        className="agency-glass fixed inset-x-3 z-40 flex gap-2 rounded-full p-1.5 md:hidden"
+        className="agency-glass fixed inset-x-3 z-40 flex gap-2 rounded-2xl p-2 md:hidden"
         style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }}
       >
         <button
           type="button"
           data-open-chat
-          className="flex min-h-[48px] basis-[40%] items-center justify-center gap-2 rounded-full bg-foreground/[0.06] text-sm font-semibold text-foreground"
+          className="relative flex min-h-[48px] basis-[40%] items-center justify-center gap-2 overflow-hidden rounded-xl border border-foreground/15 bg-foreground/[0.02] text-sm font-semibold tracking-[-0.01em] text-foreground transition-transform duration-200 active:scale-[0.98]"
         >
           <MessageCircle className="h-4 w-4 text-primary" aria-hidden="true" /> Ask AI
         </button>
         <a
           href="/contact-us"
           data-cta="dock-quote"
-          className="flex min-h-[48px] flex-1 basis-[60%] items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-[0_12px_28px_-12px_hsl(var(--primary)/0.7)]"
+          className="relative flex min-h-[48px] flex-1 basis-[60%] items-center justify-center gap-2 overflow-hidden rounded-xl text-sm font-bold tracking-[-0.01em] text-primary-foreground transition-transform duration-200 active:scale-[0.98]"
+          style={{
+            background: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.85) 100%)",
+            boxShadow: "0 4px 14px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(0 0% 100% / 0.1)",
+          }}
         >
+          <span
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "linear-gradient(135deg, hsl(0 0% 100% / 0.12) 0%, transparent 50%)" }}
+            aria-hidden="true"
+          />
           Get a Free Quote <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>
