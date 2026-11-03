@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AGENCY_FORM_FIELDS, type AgencyFormFieldKeyLike } from "@/components/agency-form-fields";
+import { AGENCY_FORM_FIELDS } from "@/components/agency-form-fields";
 import type { AgencyFormField } from "@/components/AgencyForm";
 
 function field(key: string): AgencyFormField {
