@@ -12,7 +12,18 @@ const SkeletonImage = ({ className, skeletonClassName, alt, onLoad, ...props }: 
   // Image may finish loading before hydration, so onLoad never fires.
   useEffect(() => {
     const img = imgRef.current;
-    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+    if (!img) return;
+    const done = () => setLoaded(true);
+    if (img.complete && img.naturalWidth > 0) {
+      done();
+      return;
+    }
+    img.addEventListener("load", done);
+    img.addEventListener("error", done);
+    return () => {
+      img.removeEventListener("load", done);
+      img.removeEventListener("error", done);
+    };
   }, [props.src]);
 
 
