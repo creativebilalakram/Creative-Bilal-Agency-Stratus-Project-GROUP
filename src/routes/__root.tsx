@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import NotFoundPage from "@/components/pages/NotFound";
 import LoadingScreen from "@/components/LoadingScreen";
+import { AgencyEngine } from "@/components/AgencyEngine";
 
 const JSON_LD = `{
   "@context": "https://schema.org",
@@ -149,6 +150,8 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LoadingScreen />
+      {/* Agency engine: chat widget, tracking, analytics. */}
+      <AgencyEngine />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

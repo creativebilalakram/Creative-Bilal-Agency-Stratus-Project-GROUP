@@ -7,3 +7,12 @@
 - [x] Swap react-router-dom imports; neutralize Helmet SEO component
 - [x] Install lottie-react, canvas-confetti
 - [x] Verify: build, vitest, browser smoke of all routes
+
+## Agency Platform wiring (Creative Bilal starter kit, Nov 2026)
+- [x] Read kit instructions; fetch website ID (cbw_52e94e5a0119ff14fd42ecfb)
+- [x] src/agency.config.ts with site key site_728cd80ff169ca1fc5eaeee6
+- [x] Chat widget (AgencyEngine, hybrid AI route /api/public/chat via Lovable AI Gateway), desktop floating launcher
+- [x] Tracking + visitor analytics + reviews fed to chat
+- [x] /admin redirect route
+- [ ] Contact form swap — EXCLUDED by user ("exclude contact form"): existing VEX form stays untouched
+- [ ] Verify build/tests, publish, 5-line checklist
