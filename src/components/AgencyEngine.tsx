@@ -234,7 +234,7 @@ export function AgencyEngine() {
         clientChatEndpoint: "/api/public/chat",
         branding: {
           accentColor: BRAND.accentColor,
-          avatarUrl: BRAND.avatarUrl,
+          avatarUrl: absoluteAvatar(),
           botName: BRAND.name,
           phone: AGENCY_BUSINESS_PHONE,
         },
