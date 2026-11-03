@@ -8,6 +8,7 @@
 import { useEffect } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
+import chatAvatar from "@/assets/chat-avatar.png";
 import {
   AGENCY_PLATFORM_URL,
   AGENCY_BUSINESS_PHONE,
