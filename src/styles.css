@@ -77,6 +77,22 @@
 :root {
   --radius: 0.75rem;
 
+  /* AgencyForm (kit) reads full-colour custom properties; this design system
+     stores HSL channels, so map each one to a real colour here. */
+  --af-primary: hsl(var(--primary));
+  --af-primary-foreground: hsl(var(--primary-foreground));
+  --af-background: hsl(var(--background));
+  --af-foreground: hsl(var(--foreground));
+  --af-card: hsl(var(--card));
+  --af-popover: hsl(var(--popover));
+  --af-border: hsl(var(--border));
+  --af-muted: hsl(var(--muted-foreground));
+  --af-placeholder: hsl(var(--muted-foreground) / 0.8);
+  --af-danger: hsl(var(--destructive));
+  --af-radius: var(--radius);
+  --af-radius-lg: calc(var(--radius) + 4px);
+
+
   --background: 0 0% 100%;
   --foreground: 220 20% 10%;
 
