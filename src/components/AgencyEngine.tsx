@@ -24,7 +24,9 @@ import { resolveAgencyKey, subscribeAgencyKey } from "@/hooks/useAgencyKey";
 const BRAND = {
   name: "Stratus Project Group",
   accentColor: "#DC2626",
-  avatarUrl: chatAvatar,
+  // White mark on red — served from public/ so the platform always gets an
+  // absolute URL it can render (relative bundled paths are ignored by chat.js).
+  avatarUrl: "/chat-avatar.png",
   welcome:
     "Hi there — welcome to Stratus Project Group! Ask me anything about our services, the approvals process, fees or getting started. Happy to help.",
 };
