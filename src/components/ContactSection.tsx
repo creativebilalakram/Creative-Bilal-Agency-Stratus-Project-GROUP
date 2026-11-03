@@ -15,32 +15,6 @@ const ContactSection = ({ formPosition = "right" }: ContactSectionProps) => {
   const [animationData, setAnimationData] = useState(null);
 
   useEffect(() => {
-    const el = formWrapRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setShowForm(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "400px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!showForm) return;
-    const src = "https://site.vexmanagement.com.au/js/form_embed.js";
-    if (document.querySelector(`script[src="${src}"]`)) return;
-    const sc = document.createElement("script");
-    sc.src = src;
-    sc.async = true;
-    document.body.appendChild(sc);
-  }, [showForm]);
-
-  useEffect(() => {
     fetch("/lottie/Customer-Support.json")
       .then((res) => res.json())
       .then((data) => {
@@ -81,28 +55,8 @@ const ContactSection = ({ formPosition = "right" }: ContactSectionProps) => {
             <p className="section-subtitle mb-1.5 md:mb-2">Contact us</p>
             <h2 className="section-title text-xl md:text-2xl lg:text-4xl mb-4 md:mb-6">Get in touch with us</h2>
 
-            <div className="flex-1" ref={formWrapRef} style={{ minHeight: 400 }}>
-              {showForm ? (
-              <iframe
-                src="https://site.vexmanagement.com.au/widget/form/UiXzPTpRf35g783Xj3lX"
-                style={{ width: "100%", height: "100%", minHeight: 400, border: "none", borderRadius: 8 }}
-                id="inline-UiXzPTpRf35g783Xj3lX"
-                data-layout='{"id":"INLINE"}'
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="Stratus website Form"
-                data-height="400"
-                data-layout-iframe-id="inline-UiXzPTpRf35g783Xj3lX"
-                data-form-id="UiXzPTpRf35g783Xj3lX"
-                title="Stratus website Form"
-              />
-              ) : (
-                <div className="w-full h-[400px] rounded-lg bg-muted animate-pulse" aria-hidden="true" />
-              )}
+            <div className="flex-1" style={{ minHeight: 400 }}>
+              <StratusContactForm />
             </div>
 
             <div className="mt-3 text-center">
