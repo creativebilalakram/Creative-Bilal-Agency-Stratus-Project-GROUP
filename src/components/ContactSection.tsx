@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { useStaggerReveal } from "@/hooks/useStaggerReveal";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import contactBg from "@/assets/contact-bg.png";
+import StratusContactForm from "@/components/StratusContactForm";
 
 interface ContactSectionProps {
   formPosition?: "left" | "right";
@@ -12,8 +13,6 @@ const ContactSection = ({ formPosition = "right" }: ContactSectionProps) => {
   const ref = useStaggerReveal();
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [animationData, setAnimationData] = useState(null);
-  const formWrapRef = useRef<HTMLDivElement>(null);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const el = formWrapRef.current;

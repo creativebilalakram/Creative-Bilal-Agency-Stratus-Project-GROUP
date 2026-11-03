@@ -53,7 +53,6 @@ export function DemoContactForm({ fields }: { fields: AgencyFormField[] }) {
       className="af-grid"
       onSubmit={handleSubmit}
       noValidate
-      onSubmitCapture={undefined}
     >
       {fields.map((field) => (
         <div key={field.key} className="af-field">
