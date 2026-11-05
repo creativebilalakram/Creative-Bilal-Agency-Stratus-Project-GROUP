@@ -62,7 +62,9 @@ export const Route = createFileRoute("/api/public/chat")({
         const input = parsed.data.messages
           .filter((m: ChatMessage) => m.role !== "system")
           .map((m: ChatMessage) => ({ role: m.role as "user" | "assistant", content: m.content }));
-        const leadContext = parsed.data.lead_context;
+        if (!process.env["LOVABLE_API_KEY"]) {
+          return Response.json({ error: "Local AI unavailable" }, { status: 404 });
+        }
         try {
           const resp = await generateResponse({
             model: "openai/gpt-6-astra",
@@ -77,7 +79,9 @@ export const Route = createFileRoute("/api/public/chat")({
           } else {
             console.error("[chat] unexpected error", error);
           }
-          return Response.json({ error: "Chat unavailable" }, { status: 502 });
+          // 404 tells the chat widget to fall back to the agency AI (e.g. on
+          // hosts without the AI key, like a self-hosted deploy).
+          return Response.json({ error: "Local AI unavailable" }, { status: 404 });
         }
       },
     },
