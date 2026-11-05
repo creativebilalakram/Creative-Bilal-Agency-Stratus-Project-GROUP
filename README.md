@@ -1,29 +1,56 @@
-# Welcome to your Lovable project
+# Stratus Project Group
 
-This project was built with [Lovable](https://lovable.dev).
+The official website for **Stratus Project Group**, a Sydney development consultancy, maintained by **Creative Bilal Agency**.
 
-## Build with Lovable
+**Live website:** [stratusprojectgroup.com.au](https://stratusprojectgroup.com.au)
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## About the site
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Explore Stratus Project Group's residential development services, company information, FAQs, contact options, and privacy policy. The site includes an enquiry form connected to the Agency Platform and an AI chat assistant trained on the business's published services and FAQs.
 
-## Development
+### Services
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- Feasibility studies
+- Architectural design and documentation
+- Development approvals (DA and CDC)
+- Engineering and compliance coordination
+- Construction and project management
+- Building inspections
+
+## Run locally
+
+Requirements: [Bun](https://bun.sh/) and a current Node.js runtime.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev
 ```
 
-## Built with
+Open the local address printed by the development server.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Useful commands
+
+```sh
+bun run test       # Run the test suite
+bun run lint       # Check code quality
+bun run build      # Create a production build
+bun run preview    # Preview the production build
+```
+
+## Project structure
+
+- `src/routes/` — site pages and the public chat endpoint
+- `src/components/` — shared page sections, contact form, and chat integration
+- `src/assets/` — site imagery and brand assets
+- `src/styles.css` — global styles and design tokens
+- `src/agency.config.ts` — Agency Platform site configuration
+
+## Agency Platform
+
+The contact form, chat assistant, visitor tracking, analytics, and reviews are connected through the Creative Bilal Agency Platform. Keep private credentials out of source files and browser code.
+
+## Site details
+
+- **Business:** Stratus Project Group
+- **Service area:** Sydney and surrounding NSW regions
+- **Maintained by:** Creative Bilal Agency
