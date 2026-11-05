@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/public/chat")({
         const input = parsed.data.messages
           .filter((m: ChatMessage) => m.role !== "system")
           .map((m: ChatMessage) => ({ role: m.role as "user" | "assistant", content: m.content }));
-        if (!process.env.LOVABLE_API_KEY) {
+        if (!process.env["LOVABLE_API_KEY"]) {
           return Response.json({ error: "Local AI unavailable" }, { status: 404 });
         }
         try {
