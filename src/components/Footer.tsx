@@ -65,7 +65,7 @@ const Footer = () => {
           <p className="text-navy-foreground/70 text-[10px] md:text-sm">
             Built by{" "}
             <a href="https://creativebilal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors duration-300 font-medium">
-              Creative Bilal
+              Creative Bilal Agency
             </a>
           </p>
         </div>
